@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kanagram
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kanagram-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kanagram-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kanagram-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz.sig
+Summary  : Letter Order Game
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: kanagram-bin
-Requires: kanagram-data
-Requires: kanagram-license
-Requires: kanagram-locales
+Requires: kanagram-bin = %{version}-%{release}
+Requires: kanagram-data = %{version}-%{release}
+Requires: kanagram-license = %{version}-%{release}
+Requires: kanagram-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkeduvocdocument-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -28,8 +28,8 @@ No detailed description available
 %package bin
 Summary: bin components for the kanagram package.
 Group: Binaries
-Requires: kanagram-data
-Requires: kanagram-license
+Requires: kanagram-data = %{version}-%{release}
+Requires: kanagram-license = %{version}-%{release}
 
 %description bin
 bin components for the kanagram package.
@@ -68,26 +68,26 @@ locales components for the kanagram package.
 
 
 %prep
-%setup -q -n kanagram-18.08.0
+%setup -q -n kanagram-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535425908
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549943146
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535425908
+export SOURCE_DATE_EPOCH=1549943146
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kanagram
-cp COPYING %{buildroot}/usr/share/doc/kanagram/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kanagram/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/kanagram
+cp COPYING %{buildroot}/usr/share/package-licenses/kanagram/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kanagram/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -216,9 +216,9 @@ popd
 /usr/share/doc/HTML/uk/kanagram/vocab-settings.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kanagram/COPYING
-/usr/share/doc/kanagram/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kanagram/COPYING
+/usr/share/package-licenses/kanagram/COPYING.DOC
 
 %files locales -f kanagram.lang
 %defattr(-,root,root,-)
