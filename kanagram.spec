@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kanagram
-Version  : 18.12.2
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/kanagram-18.12.2.tar.xz.sig
+Version  : 18.12.3
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.3/src/kanagram-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/kanagram-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/kanagram-18.12.3.tar.xz.sig
 Summary  : Letter Order Game
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -68,22 +68,23 @@ locales components for the kanagram package.
 
 
 %prep
-%setup -q -n kanagram-18.12.2
+%setup -q -n kanagram-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549943146
+export SOURCE_DATE_EPOCH=1551984565
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549943146
+export SOURCE_DATE_EPOCH=1551984565
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kanagram
 cp COPYING %{buildroot}/usr/share/package-licenses/kanagram/COPYING
@@ -194,6 +195,8 @@ popd
 /usr/share/doc/HTML/pt/kanagram/index.docbook
 /usr/share/doc/HTML/pt_BR/kanagram/index.cache.bz2
 /usr/share/doc/HTML/pt_BR/kanagram/index.docbook
+/usr/share/doc/HTML/ru/kanagram/index.cache.bz2
+/usr/share/doc/HTML/ru/kanagram/index.docbook
 /usr/share/doc/HTML/sv/kanagram/answer-highlight.png
 /usr/share/doc/HTML/sv/kanagram/general-settings.png
 /usr/share/doc/HTML/sv/kanagram/helpstates.png
