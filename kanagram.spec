@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kanagram
-Version  : 19.08.2
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.08.2/src/kanagram-19.08.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.2/src/kanagram-19.08.2.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.2/src/kanagram-19.08.2.tar.xz.sig
+Version  : 19.08.3
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.3/src/kanagram-19.08.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.3/src/kanagram-19.08.3.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.3/src/kanagram-19.08.3.tar.xz.sig
 Summary  : Letter Order Game
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -68,14 +68,14 @@ locales components for the kanagram package.
 
 
 %prep
-%setup -q -n kanagram-19.08.2
+%setup -q -n kanagram-19.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570736789
+export SOURCE_DATE_EPOCH=1573160381
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -92,11 +92,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570736789
+export SOURCE_DATE_EPOCH=1573160381
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kanagram
-cp COPYING %{buildroot}/usr/share/package-licenses/kanagram/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kanagram/COPYING.DOC
+cp %{_builddir}/kanagram-19.08.3/COPYING %{buildroot}/usr/share/package-licenses/kanagram/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/kanagram-19.08.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/kanagram/1bd373e4851a93027ba70064bd7dbdc6827147e1
 pushd clr-build
 %make_install
 popd
@@ -230,8 +230,8 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kanagram/COPYING
-/usr/share/package-licenses/kanagram/COPYING.DOC
+/usr/share/package-licenses/kanagram/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+/usr/share/package-licenses/kanagram/1bd373e4851a93027ba70064bd7dbdc6827147e1
 
 %files locales -f kanagram.lang
 %defattr(-,root,root,-)
