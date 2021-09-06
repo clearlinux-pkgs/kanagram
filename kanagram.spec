@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kanagram
-Version  : 21.04.2
-Release  : 29
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kanagram-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kanagram-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kanagram-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 30
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kanagram-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kanagram-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kanagram-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -69,35 +69,35 @@ locales components for the kanagram package.
 
 
 %prep
-%setup -q -n kanagram-21.04.2
-cd %{_builddir}/kanagram-21.04.2
+%setup -q -n kanagram-21.08.1
+cd %{_builddir}/kanagram-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623365818
+export SOURCE_DATE_EPOCH=1630960643
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623365818
+export SOURCE_DATE_EPOCH=1630960643
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kanagram
-cp %{_builddir}/kanagram-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/kanagram/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-cp %{_builddir}/kanagram-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kanagram/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/kanagram-21.08.1/COPYING %{buildroot}/usr/share/package-licenses/kanagram/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/kanagram-21.08.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/kanagram/1bd373e4851a93027ba70064bd7dbdc6827147e1
 pushd clr-build
 %make_install
 popd
