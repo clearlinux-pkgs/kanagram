@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kanagram
-Version  : 23.04.3
-Release  : 55
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/kanagram-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kanagram-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kanagram-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 56
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/kanagram-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/kanagram-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/kanagram-23.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -72,15 +72,15 @@ locales components for the kanagram package.
 
 
 %prep
-%setup -q -n kanagram-23.04.3
-cd %{_builddir}/kanagram-23.04.3
+%setup -q -n kanagram-23.08.0
+cd %{_builddir}/kanagram-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688855453
+export SOURCE_DATE_EPOCH=1693018752
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -113,7 +113,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688855453
+export SOURCE_DATE_EPOCH=1693018752
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kanagram
 cp %{_builddir}/kanagram-%{version}/COPYING %{buildroot}/usr/share/package-licenses/kanagram/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
@@ -213,6 +213,19 @@ popd
 /usr/share/doc/HTML/es/kanagram/index.docbook
 /usr/share/doc/HTML/et/kanagram/index.cache.bz2
 /usr/share/doc/HTML/et/kanagram/index.docbook
+/usr/share/doc/HTML/fr/kanagram/answer-highlight.png
+/usr/share/doc/HTML/fr/kanagram/general-settings.png
+/usr/share/doc/HTML/fr/kanagram/helpstates.png
+/usr/share/doc/HTML/fr/kanagram/index.cache.bz2
+/usr/share/doc/HTML/fr/kanagram/index.docbook
+/usr/share/doc/HTML/fr/kanagram/kanagram-hint.png
+/usr/share/doc/HTML/fr/kanagram/kanagram.png
+/usr/share/doc/HTML/fr/kanagram/newstuff-dialog.png
+/usr/share/doc/HTML/fr/kanagram/newstuff-settings.png
+/usr/share/doc/HTML/fr/kanagram/shortcuts-settings.png
+/usr/share/doc/HTML/fr/kanagram/standard-fonts.png
+/usr/share/doc/HTML/fr/kanagram/vocab-editor.png
+/usr/share/doc/HTML/fr/kanagram/vocab-settings.png
 /usr/share/doc/HTML/it/kanagram/index.cache.bz2
 /usr/share/doc/HTML/it/kanagram/index.docbook
 /usr/share/doc/HTML/nl/kanagram/answer-highlight.png
